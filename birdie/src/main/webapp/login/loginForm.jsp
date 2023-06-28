@@ -1,68 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 화면</title>
+<title>로그인</title>
+<%@include file="/common/bootstrap_common.jsp"%>
+<link rel="stylesheet" href="/css/main.css?abc">
 </head>
 <body>
-<p class="tip">Click on button in image container</p>
-<div class="cont">
-  <div class="form sign-in">
-    <h2>Welcome back,</h2>
-    <label>
-      <span>Email</span>
-      <input type="email" />
-    </label>
-    <label>
-      <span>Password</span>
-      <input type="password" />
-    </label>
-    <p class="forgot-pass">Forgot password?</p>
-    <button type="button" class="submit">Sign In</button>
-    <button type="button" class="fb-btn">Connect with <span>facebook</span></button>
-  </div>
-  <div class="sub-cont">
-    <div class="img">
-      <div class="img__text m--up">
-        <h2>New here?</h2>
-        <p>Sign up and discover great amount of new opportunities!</p>
-      </div>
-      <div class="img__text m--in">
-        <h2>One of us?</h2>
-        <p>If you already has an account, just sign in. We've missed you!</p>
-      </div>
-      <div class="img__btn">
-        <span class="m--up">Sign Up</span>
-        <span class="m--in">Sign In</span>
-      </div>
-    </div>
-    <div class="form sign-up">
-      <h2>Time to feel like home,</h2>
-      <label>
-        <span>Name</span>
-        <input type="text" />
-      </label>
-      <label>
-        <span>Email</span>
-        <input type="email" />
-      </label>
-      <label>
-        <span>Password</span>
-        <input type="password" />
-      </label>
-      <button type="button" class="submit">Sign Up</button>
-      <button type="button" class="fb-btn">Join with <span>facebook</span></button>
-    </div>
-  </div>
-</div>
+	<!-- header start -->
+	<%@include file="/include/header.jsp"%>
+	<!-- header end    -->
 
-<a href="https://dribbble.com/shots/3306190-Login-Registration-form" target="_blank" class="icon-link">
-  <img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png">
-</a>
-<a href="https://twitter.com/NikolayTalanov" target="_blank" class="icon-link icon-link--twitter">
-  <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png">
-</a>
+	<!-- body start    -->
+	<div class="container">
+
+<form id="f_login" action="/login/login.pj3" method="post">
+			<div class="mb-3 mt-3">
+				<label for="mem_id" class="form-label">아이디</label> <input
+					type="text" class="form-control" id="mem_id"
+					placeholder="Enter id" name="mem_id">
+			</div>
+			<div class="mb-3">
+				<label for="pwd" class="form-label">비밀번호:</label> <input
+					type="password" class="form-control" id="mem_pw"
+					placeholder="Enter password" name="mem_pw">
+			</div>
+			<button type="button" id="btn-login" class="btn btn-primary">로그인</button>
+			<script>
+				const btnLogin = document.querySelector("#btn-login")
+				btnLogin.addEventListener('click', (e) => {
+					//alert('11');
+					document.querySelector("#f_login").submit();
+				})
+			</script><!-- id는 내껄로, img는 파일에 넣었던거 -->
+			<a
+				href="https://kauth.kakao.com/oauth/authorize?client_id=fef1d95c7be2e9f63e2b67307d82a222&redirect_uri=http://localhost:9000/auth/kakao/callback&response_type=code"><img
+				height="38px" src="/images/kakao_login/ko/kakao_login_medium_narrow.png"></a>
+			<button type="button" class="btn btn-success" data-bs-toggle="modal"
+				data-bs-target="#memberForm" onclick="location.href='../signup/signUp.jsp'" >회원가입</button>	
+		</form>
+
+	</div>
+	<!-- body end    -->
+
+	<!-- bottom start -->
+	<%@include file="/include/bottom.jsp"%>
+	<!-- bottom end    -->
 </body>
-</html>

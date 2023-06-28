@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>birdie</title>
+<title>birdie 예약</title>
 <%@include file="/common/bootstrap_common.jsp"%>
 <link rel="stylesheet" href="../css/reservation.css">
 <style>
@@ -16,6 +16,12 @@
 table, th {
 	border: 1px solid black;
 }
+.context_div {
+  display: flex;
+  align-items: center; /* 수직 정렬 */
+  flex-direction: row; /* default: row */
+  justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
+}
 </style>
 </head>
 <body>
@@ -25,15 +31,12 @@ table, th {
 	<div
 		style="display: flex; flex-wrap: wrap; justify-content: space-around;">
 		<!-- image div 시작 -->
-		<div
-			style="background-image: url('../image/1번룸.png'); width: 900px; height: 1800px; background-position: center; background-repeat: no-repeat;">
+		<div style="background-image: url('../image/1번룸.png'); width: 900px; height: 800px; background-position: center; background-repeat: no-repeat;">
 		</div>
 		<!-- context div 시작 -->
-		<div>
-			<form action="${contextPath}/booking/bookingDo" method="post"
-				name="select">
-				<input type="hidden" name="userId" id="userId"
-					value="${successLoginUser}">
+		<div class="context_div">
+			<form action="${contextPath}/reservation/reservationDo" method="post" name="select">
+				<input type="hidden" name="userId" id="userId" value="${successLoginUser}">
 				<table border="1" solid gray; width="400" height="50">
 					<tr>
 						<td style="float: left; padding: 15px;">
@@ -50,7 +53,8 @@ table, th {
 								<option value="5">5번</option>
 								<option value="6">6번</option>
 						</select>
-							</div></td>
+							</div>
+							</td>
 					</tr>
 				</table>
 				<br>
