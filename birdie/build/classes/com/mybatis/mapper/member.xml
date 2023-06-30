@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mybatis.mapper.memberMapper">
+<mapper namespace="com.mybatis.mapper.member">
 <!-- id값과 메소드이름과 화면이름  일치 -->
 	<insert id="memberInsert" parameterType="map">
 		INSERT INTO member(mem_no, mem_id, mem_password, mem_name, mem_phone
-											, mem_email, mem_score, mem_gender, mem_type)
-		VALUES(seq_member.nextval, #{mem_id},#{mem_password},#{mem_name}, #{mem_phone}
-																, #{mem_email}, #{mem_score}, #{mem_gender}, #{mem_type})
+											, mem_email, mem_gender, mem_type)
+		VALUES(MEM_NO_SEQ.NEXTVAL, #{mem_id},#{mem_password},#{mem_name}, #{mem_phone}
+																, #{mem_email}, #{mem_gender}, #{mem_type})
 	</insert>
 	<update id="memberUpdate" parameterType="map">
 		UPDATE member
@@ -22,7 +22,7 @@
 		</where>	   
 	</update>
 	<delete id="memberDelete" parameterType="map">
-		DELETE FROM member
+		DELETE FROM members
 		<where>
 			<if test='mem_no !=null'>
 		        AND mem_no = #{mem_no}
@@ -33,7 +33,7 @@
 		SELECT 
 		            mem_no, mem_id, mem_password, mem_name, mem_phone
 				  , mem_email, mem_score, mem_gender, mem_type
-		   FROM member
+		   FROM members
 		<where>
 			<if test='mem_no !=null'>
 		        AND mem_no = #{mem_no} 

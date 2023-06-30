@@ -19,5 +19,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="C:/eclipse/lombok.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/lombok-1.18.11.97.jar"/>
+	<classpathentry kind="lib" path="src/main/java/log4j.properties"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

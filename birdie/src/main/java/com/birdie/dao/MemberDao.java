@@ -15,7 +15,6 @@ public class MemberDao {
 	// myBatis Layer 설정 바탕으로 객체 주입이 필요하다
 	SqlSessionFactory sqlSessionFactory = null;// 오라클 서버 접속
 	SqlSession sqlSession = null;// 커밋과 롤백 담당
-
 	public MemberDao() {// 파라미터가 없는 생성자를 디폴트 생성자라고 한다.
 		sqlSessionFactory = MyBatisCommonFactory.getSqlSessionFactory();
 	}// end of MemberDao
@@ -39,7 +38,9 @@ public class MemberDao {
 		sqlSession = sqlSessionFactory.openSession();
 		try {
 			result = sqlSession.insert("memberInsert", pMap);
+			logger.info(result);
 			sqlSession.commit();
+			logger.info(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

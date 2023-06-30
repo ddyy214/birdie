@@ -54,7 +54,7 @@ public class MemberController implements Controller{
 			result = memberLogic.memberInsert(pMap);
 			//성공시 1
 			if(result==1) {
-				page="redirect:memberList.bd";
+				page="redirect:member/memberList.bd";
 				//실패했을때
 			}else{
 				page="redirect:memberError";				

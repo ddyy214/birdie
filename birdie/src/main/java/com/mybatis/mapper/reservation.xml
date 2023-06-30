@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.reservationMapper">
+<!-- id값과 메소드이름과 화면이름  일치 -->
+	<insert id="reservationInsert" parameterType="map">
+		INSERT INTO reservation(res_no, mem_no, res_date)
+		VALUES(seq_res_no.nextval, #{mem_no}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+	</insert>
+	<update id="reservationUpdate" parameterType="map">
+		UPDATE reservation
+		       SET  mem_no = #{mem_no}
+		            ,  res_date = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+		<where>
+			<if test='res_no !=null'>
+		        AND res_no = #{res_no} 
+			</if>
+		</where>	   
+	</update>
+	<delete id="reservationDelete" parameterType="map">
+		DELETE FROM reservation
+		<where>
+			<if test='res_no !=null'>
+		        AND res_no = #{res_no}
+			</if>
+		</where>	 		
+	</delete>
+	<select id="reservationList" resultType="map" parameterType="java.util.Map">
+		SELECT 
+		            res_no, mem_no, res_date
+		   FROM reservation
+		<where>
+			<if test='res_no !=null'>
+		        AND res_no = #{res_no} 
+			</if>
+		</where>	   
+	</select>
+</mapper>

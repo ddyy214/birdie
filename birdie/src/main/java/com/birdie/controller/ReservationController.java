@@ -51,7 +51,7 @@ public class ReservationController  implements Controller{
 			logger.info(pMap); 
 			result = reservationLogic.reservationInsert(pMap);
 			if(result ==1) {
-				page="redirect:reservationList.bd";
+				page="redirect:reservationConfirmed.jsp";
 			}else{
 				page="redirect:reservationError";				
 			}

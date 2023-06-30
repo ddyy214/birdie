@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Birdie Reservation Success</title>
+  <title>Birdie 예약 성공</title>
   <%@include file="/common/bootstrap_common.jsp"%>
   <link rel="stylesheet" href="/css/notice.css">
   <script type="text/javascript"></script>
@@ -10,14 +10,12 @@
     body {
       text-align: center;
     }
-    
     hr {
       margin-top: 50px;
       margin-bottom: 50px;
       border: none;
       border-top: 2px solid #000;
     }
-    
     .success-message {
       text-align: center;
       font-size: 24px;
@@ -47,7 +45,8 @@
   </style>
 </head>
 <body>
-  <%@include file="/include/header.jsp"%>
+<%@include file="/include/header.jsp"%>
+	<div>
   <hr>
   <div class="success-message">
     <p>예약이 성공적으로 완료되었습니다!</p>
@@ -57,8 +56,8 @@
     <a class="btn" href="/myPage/reservationCheck_member.jsp">마이페이지</a>
     <a class="btn" href="/mainPage_mainPage_member">Home</a>
   </div>
-  
   <hr>
+  </div>
   <%@include file="/include/bottom.jsp"%>
 </body>
 </html>

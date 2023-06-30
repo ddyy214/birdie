@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.payMapper">
+<!-- id값과 메소드이름과 화면이름  일치 -->
+	<insert id="payInsert" parameterType="map">
+		INSERT INTO pay(mem_no, res_no, pay_price, pay_date)
+		VALUES(#{mem_no},#{res_no},#{pay_price}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'))
+	</insert>
+	<update id="payUpdate" parameterType="map">
+		UPDATE pay
+		       SET  mem_password = #{mem_password}
+		            ,  pay_price = #{mem_name}
+		            ,  pay_date = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+		<where>
+			<if test='mem_no !=null'>
+		        AND res_no = #{res_no} 
+			</if>
+		</where>	   
+	</update>
+	<delete id="payDelete" parameterType="map">
+		DELETE FROM pay
+		<where>
+			<if test='mem_no !=null'>
+		        AND res_no = #{res_no}
+			</if>
+		</where>	 		
+	</delete>
+	<select id="payList" resultType="map" parameterType="java.util.Map">
+		SELECT 
+		            mem_no, res_no, pay_price, pay_date
+		   FROM pay
+		<where>
+			<if test='res_no !=null'>
+		        AND res_no = #{res_no} 
+			</if>
+		</where>	   
+	</select>
+</mapper>

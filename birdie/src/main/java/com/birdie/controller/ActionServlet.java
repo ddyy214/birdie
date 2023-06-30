@@ -8,22 +8,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
+
 @SuppressWarnings("serial")
 public class ActionServlet  extends HttpServlet{
 	Logger logger = Logger.getLogger(ActionServlet.class);
-	protected void doService(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		logger.info("doService");
+	public void doService(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		logger.info("doService 호출");
 		String uri = req.getRequestURI();//요청객체로 넘어온 URI
-		logger.info(uri);
+		logger.info(uri); //memberInsert.bd
 		String context = req.getContextPath();
+		logger.info(context); // "/" -> server.xml에 들어있음
 		String command = uri.substring(context.length()+1);
+		logger.info(command);
 		int end = command.lastIndexOf("."); 
+		System.out.println(end); //
 		command = command.substring(0,end);
-		String upmu[] = null;
-		//슬래시를 기준으로 문자열을 썰어서 배열에 순서대로 담아줌
-		upmu = command.split("/");
-		//요청객체에다가 upmu배열의 주소번지를 저장
-		//XXXController 에서 if문으로 5가지 경우를 나눠야한다.
+		System.out.println(command);
+		String upmu[] = null; // upmu[0]=업무명(폴더명), upmu[1]=요청기능이름(메소드명)
+		upmu = command.split("/"); //슬래시를 기준으로 문자열을 잘라서 upmu 배열에 순서대로 담아줌
+		logger.info(upmu[0] + ", "+ upmu[1]); //upmu req에 담기
 		Controller controller = null; //변수 초기화
 		String page = null; //변수 초기화
 		// http://localhost:9000/member/memberList.bd
