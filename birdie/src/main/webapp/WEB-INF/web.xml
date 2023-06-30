@@ -13,8 +13,6 @@
   	<servlet-name>ActionServlet</servlet-name>
   	<url-pattern>*.bd</url-pattern>
   </servlet-mapping>
- 
-
 </web-app>
 <!-- 
 xml주석은 html주석과 동일함
@@ -38,14 +36,3 @@ html과 같이 markup language이나 훨씬 더 엄격한 파일임
 url패턴에 어떤(*:와일드카드,아스터리스크) 이름이 오더라도 확장자가 pj1으로 끝나면
 FrontMVC.java가 인터셉트 한다 
  -->
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
